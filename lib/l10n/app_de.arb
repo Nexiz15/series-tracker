@@ -1,6 +1,10 @@
 {
   "homeMySeries": "Meine Serien:",
   "@home": {
-    "description": "Meine Serien"
+    "description": "list view title"
+  },
+  "homeSearchButtonPlaceholder": "Suchen",
+  "@homeSearchButtonPlaceholder": {
+    "description": "search button placeholder"
   }
 }

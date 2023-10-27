@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:series_tracker/screens/SeriesListScreen.dart';
+import 'package:series_tracker/store/SeriesOverviewStore.dart';
 
 void main() {
   runApp(const SeriesTracker());
@@ -10,23 +13,13 @@ class SeriesTracker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => SeriesOverviewStore(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-      home: HomeTitle());
-  }
-}
-class HomeTitle extends StatelessWidget {
-  const HomeTitle({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      body: SafeArea(
-        child: Container(
-          child: Text(AppLocalizations.of(context)!.homeMySeries),
-        ),
+        home: SeriesListScreen(),
       ),
     );
   }
