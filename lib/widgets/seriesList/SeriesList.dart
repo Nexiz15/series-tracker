@@ -17,13 +17,16 @@ class SeriesList extends StatefulWidget {
 class _SeriesListState extends State<SeriesList> {
 
   SeriesOverviewService seriesOverviewService = getIt.get();
-  List<SeriesOverview> series = List.empty();
 
   @override
   void initState() {
     super.initState();
-    seriesOverviewService.findAllSeries();
-    // TODO call db and set store
+    loadSeries();
+  }
+
+  void loadSeries() async {
+      List<SeriesOverview> series = await seriesOverviewService.findAllSeries();
+      Provider.of<SeriesOverviewStore>(context, listen: false).updateSeriesList(series);
   }
 
   @override
