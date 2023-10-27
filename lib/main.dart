@@ -4,7 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:series_tracker/screens/SeriesListScreen.dart';
 import 'package:series_tracker/store/SeriesOverviewStore.dart';
 
+import 'config/injectable.dart';
+
 void main() {
+  configureDependencies();
   runApp(const SeriesTracker());
 }
 

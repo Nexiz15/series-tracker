@@ -4,6 +4,7 @@ Tracker for TV Series
 
 ## Getting Started
 
+### Flutter Instalation
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+### Injectable Adaptions
+If you add new services that uses the `@Injectable` annotation, you have to run this command afterwards: `flutter packages pub run build_runner build`

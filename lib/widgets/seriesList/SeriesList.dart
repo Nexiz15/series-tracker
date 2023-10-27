@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:series_tracker/model/SeriesOverview.dart';
 import 'package:provider/provider.dart';
+import 'package:series_tracker/service/SeriesOverviewService.dart';
 import 'package:series_tracker/store/SeriesOverviewStore.dart';
 import 'package:series_tracker/widgets/seriesList/SeriesListEntry.dart';
+
+import '../../config/injectable.dart';
 
 class SeriesList extends StatefulWidget {
   const SeriesList({super.key});
@@ -13,11 +16,13 @@ class SeriesList extends StatefulWidget {
 
 class _SeriesListState extends State<SeriesList> {
 
+  SeriesOverviewService seriesOverviewService = getIt.get();
   List<SeriesOverview> series = List.empty();
 
   @override
   void initState() {
     super.initState();
+    seriesOverviewService.findAllSeries();
     // TODO call db and set store
   }
 
