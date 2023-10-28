@@ -50,7 +50,7 @@ class SeriesListEntry extends StatelessWidget {
     if (progressInPercent == 100) {
       return Colors.green;
     } else {
-      return Colors.blue;
+      return Colors.purple;
     }
   }
 }

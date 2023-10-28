@@ -11,7 +11,7 @@ class SeriesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.cyan,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
