@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/constants.dart';
+import '../../dataHolder/SeriesOverviewDataHolder.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({super.key});
@@ -21,6 +23,7 @@ class SearchField extends StatelessWidget {
           isDense: true,
           hintText: AppLocalizations.of(context)?.homeSearchButtonPlaceholder ?? '',
         ),
+        onChanged: (e) => Provider.of<SeriesOverviewDataHolder>(context, listen: false).setSearchText(e),
       ),
     );
   }

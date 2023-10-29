@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:series_tracker/model/SeriesOverview.dart';
 import 'package:provider/provider.dart';
 import 'package:series_tracker/service/SeriesOverviewService.dart';
-import 'package:series_tracker/store/SeriesOverviewStore.dart';
+import 'package:series_tracker/dataHolder/SeriesOverviewDataHolder.dart';
 import 'package:series_tracker/widgets/seriesList/SeriesListEntry.dart';
 
 import '../../config/injectable.dart';
@@ -27,23 +27,23 @@ class _SeriesListState extends State<SeriesList> {
   void loadSeries() async {
       List<SeriesOverview> series = await seriesOverviewService.findAllSeries();
       if (mounted) {
-        Provider.of<SeriesOverviewStore>(context, listen: false).updateSeriesList(series);
+        Provider.of<SeriesOverviewDataHolder>(context, listen: false).setSeriesList(series);
       }
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-          child: Consumer<SeriesOverviewStore>(
-            builder: (context, seriesOverviewStore, child) {
+          child: Consumer<SeriesOverviewDataHolder>(
+            builder: (context, seriesOverviewDataHolder, child) {
               return ListView.separated(
                 padding: const EdgeInsets.only(top: 20),
                 shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    final series = seriesOverviewStore.series[index];
+                    final series = seriesOverviewDataHolder.series[index];
                     return SeriesListEntry(series: series);
                   },
-                itemCount: seriesOverviewStore.seriesCount,
+                itemCount: seriesOverviewDataHolder.seriesCount,
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 30,
                 ),
