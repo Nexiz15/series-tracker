@@ -9,6 +9,7 @@ import 'package:series_tracker/screens/LoadingScreen.dart';
 import 'package:series_tracker/screens/SeriesListScreen.dart';
 
 import 'config/injectable.dart';
+import 'config/routes.dart';
 
 void main() {
   configureDependencies();
@@ -34,17 +35,22 @@ class SeriesTracker extends StatelessWidget {
         debugShowCheckedModeBanner: Constants.showDebugBanner,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: FutureBuilder(
-            future:
-                GetIt.instance.allReady(timeout: const Duration(seconds: 3)),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.hasData) {
-                return const SeriesListScreen();
-              } else {
-                return const LoadingScreen();
-              }
-            }),
+        routes: Routes.defineRoutes(),
+        home: initialScreen(),
       ),
+    );
+  }
+
+  Widget initialScreen() {
+    return FutureBuilder(
+      future: GetIt.instance.allReady(timeout: const Duration(seconds: 3)),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return const SeriesListScreen();
+        } else {
+          return const LoadingScreen();
+        }
+      },
     );
   }
 }

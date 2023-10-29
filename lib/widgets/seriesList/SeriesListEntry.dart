@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:series_tracker/config/constants.dart';
+import 'package:series_tracker/config/routes.dart';
 import 'package:series_tracker/model/SeriesOverview.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,30 +15,37 @@ class SeriesListEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(Constants.defaultScreenBorderPadding),
-              child: getIcon(series.progressInPercent),
-            ),
-            Text(
-              series.name,
-              style: const TextStyle(fontSize: Constants.listEntryFontSize),
-            ),
-          ],
-        ),
-        LinearProgressBar(
-          maxSteps: maxPercent,
-          progressType:
-              LinearProgressBar.progressTypeLinear, // Use Linear progress
-          currentStep: series.progressInPercent,
-          progressColor: getProgressColor(series.progressInPercent),
-          backgroundColor: Colors.grey,
-        ),
-      ],
+    return InkWell(
+      onTap: () => Navigator.pushNamed(
+        context,
+        Routes.seriesEditScreenPath,
+        arguments: series.id
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(Constants.defaultScreenBorderPadding),
+                child: getIcon(series.progressInPercent),
+              ),
+              Text(
+                series.name,
+                style: const TextStyle(fontSize: Constants.listEntryFontSize),
+              ),
+            ],
+          ),
+          LinearProgressBar(
+            maxSteps: maxPercent,
+            progressType:
+                LinearProgressBar.progressTypeLinear, // Use Linear progress
+            currentStep: series.progressInPercent,
+            progressColor: getProgressColor(series.progressInPercent),
+            backgroundColor: Colors.grey,
+          ),
+        ],
+      ),
     );
   }
 
