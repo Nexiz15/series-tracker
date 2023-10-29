@@ -26,7 +26,9 @@ class _SeriesListState extends State<SeriesList> {
 
   void loadSeries() async {
       List<SeriesOverview> series = await seriesOverviewService.findAllSeries();
-      Provider.of<SeriesOverviewStore>(context, listen: false).updateSeriesList(series);
+      if (mounted) {
+        Provider.of<SeriesOverviewStore>(context, listen: false).updateSeriesList(series);
+      }
   }
 
   @override

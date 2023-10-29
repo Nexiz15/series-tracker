@@ -52,6 +52,7 @@ dev_dependencies:
   injectable_generator: ^2.4.1
   floor_generator: ^1.4.2
   build_runner: ^2.4.6
+  loading_animation_widget: 1.2.0+4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

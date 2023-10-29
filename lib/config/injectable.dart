@@ -12,7 +12,7 @@ final getIt = GetIt.instance;
 )
 void configureDependencies() {
   getIt.init();
-  getIt.registerSingletonAsync(() async => $FloorAppDatabase.databaseBuilder(AppDatabase.APP_DATABASE_NAME).build());
+  getIt.registerSingletonAsync(() async => $FloorAppDatabase.databaseBuilder(AppDatabase.appDatabaseName).build());
   getIt.registerSingletonWithDependencies(() => GetIt.instance.get<AppDatabase>().seriesDao, dependsOn: [AppDatabase]);
   getIt.registerSingletonWithDependencies(() => GetIt.instance.get<AppDatabase>().seasonDao, dependsOn: [AppDatabase]);
   getIt.registerSingletonWithDependencies(() => GetIt.instance.get<AppDatabase>().episodeDao, dependsOn: [AppDatabase]);

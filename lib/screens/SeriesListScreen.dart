@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:series_tracker/widgets/seriesList/SeriesList.dart';
+import '../config/constants.dart';
 import '../widgets/seriesList/SearchField.dart';
 import '../widgets/seriesList/SeriesListTitle.dart';
 
@@ -11,7 +12,7 @@ class SeriesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.cyan,
+        backgroundColor: Constants.primaryColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -21,10 +22,10 @@ class SeriesListScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 20.0),
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Constants.secondaryColor,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0),
+                    topLeft: Radius.circular(Constants.defaultBorderRadius),
+                    topRight: Radius.circular(Constants.defaultBorderRadius),
                   ),
                 ),
                 child: const Column(

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:series_tracker/config/constants.dart';
 import 'package:series_tracker/model/SeriesOverview.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+const int maxPercent = 100;
 
 class SeriesListEntry extends StatelessWidget {
   final SeriesOverview series;
@@ -17,17 +20,17 @@ class SeriesListEntry extends StatelessWidget {
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(Constants.defaultScreenBorderPadding),
               child: getIcon(series.progressInPercent),
             ),
             Text(
               series.name,
-              style: const TextStyle(fontSize: 25),
+              style: const TextStyle(fontSize: Constants.listEntryFontSize),
             ),
           ],
         ),
         LinearProgressBar(
-          maxSteps: 100,
+          maxSteps: maxPercent,
           progressType:
               LinearProgressBar.progressTypeLinear, // Use Linear progress
           currentStep: series.progressInPercent,
@@ -39,7 +42,7 @@ class SeriesListEntry extends StatelessWidget {
   }
 
   FaIcon getIcon(int progressInPercent) {
-    if (progressInPercent == 100) {
+    if (progressInPercent == maxPercent) {
       return const FaIcon(FontAwesomeIcons.flagCheckered);
     } else {
       return const FaIcon(FontAwesomeIcons.tv);
@@ -47,10 +50,10 @@ class SeriesListEntry extends StatelessWidget {
   }
 
   Color getProgressColor(int progressInPercent) {
-    if (progressInPercent == 100) {
-      return Colors.green;
+    if (progressInPercent == maxPercent) {
+      return Constants.finishedColor;
     } else {
-      return Colors.purple;
+      return Constants.onGoingColor;
     }
   }
 }
