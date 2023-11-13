@@ -8,6 +8,6 @@ class Constants {
   static const Color finishedColor = Colors.green;
   static const double defaultBorderRadius = 20.0;
   static const double titleFontSize = 30.0;
-  static const double listEntryFontSize = 25.0;
+  static const double entryFontSize = 25.0;
   static const double defaultScreenBorderPadding = 10.0;
 }

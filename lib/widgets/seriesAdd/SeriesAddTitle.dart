@@ -3,10 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:series_tracker/config/constants.dart';
-import 'package:series_tracker/config/routes.dart';
 
-class ListSeriesTitle extends StatelessWidget {
-  const ListSeriesTitle({super.key});
+class SeriesAddTitle extends StatelessWidget {
+  const SeriesAddTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class ListSeriesTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppLocalizations.of(context)?.homeMySeries ?? '',
+              AppLocalizations.of(context)?.addAddSeries ?? '',
               style: const TextStyle(fontSize: Constants.titleFontSize),
             ),
             Container(
@@ -30,11 +29,9 @@ class ListSeriesTitle extends StatelessWidget {
                     Radius.circular(Constants.defaultBorderRadius)),
               ),
               child: TextButton(
-                  onPressed: () => {
-                    Navigator.pushNamed(context, Routes.seriesAddScreenPath),
-                  },
+                  onPressed: () => {},
                   child: const FaIcon(
-                    FontAwesomeIcons.plus,
+                    FontAwesomeIcons.check,
                     color: Constants.primaryColor,
                   )),
             )

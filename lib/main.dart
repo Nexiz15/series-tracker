@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:series_tracker/config/constants.dart';
+import 'package:series_tracker/dataHolder/AddSeriesDataHolder.dart';
 import 'package:series_tracker/dataHolder/SeriesOverviewDataHolder.dart';
 import 'package:series_tracker/screens/LoadingScreen.dart';
 import 'package:series_tracker/screens/SeriesListScreen.dart';
@@ -29,8 +30,15 @@ class SeriesTracker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => SeriesOverviewDataHolder(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<SeriesOverviewDataHolder>(
+          create: (_) => SeriesOverviewDataHolder(),
+        ),
+        ChangeNotifierProvider<AddSeriesDataHolder>(
+          create: (_) => AddSeriesDataHolder(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: Constants.showDebugBanner,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

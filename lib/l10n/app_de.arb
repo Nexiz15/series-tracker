@@ -3,8 +3,16 @@
   "@home": {
     "description": "list view title"
   },
+  "addAddSeries": "Serie hinzufügen",
+  "@addAddSeries": {
+    "description": "add series"
+  },
   "homeSearchButtonPlaceholder": "Suchen",
   "@homeSearchButtonPlaceholder": {
     "description": "search button placeholder"
+  },
+  "addEpisodeName": "Name: ",
+  "@addEpisodeName": {
+    "description": "name of an episode"
   }
 }

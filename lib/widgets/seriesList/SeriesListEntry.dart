@@ -32,7 +32,7 @@ class SeriesListEntry extends StatelessWidget {
               ),
               Text(
                 series.name,
-                style: const TextStyle(fontSize: Constants.listEntryFontSize),
+                style: const TextStyle(fontSize: Constants.entryFontSize),
               ),
             ],
           ),
