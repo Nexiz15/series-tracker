@@ -14,5 +14,13 @@
   "addEpisodeName": "Name: ",
   "@addEpisodeName": {
     "description": "name of an episode"
+  },
+  "addEpisodeSeason": "Staffel",
+  "@addEpisodeSeason": {
+    "description": "season"
+  },
+  "addEpisodeSeasons": "Staffeln",
+  "@addEpisodeSeasons": {
+    "description": "seasons"
   }
 }

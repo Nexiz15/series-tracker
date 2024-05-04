@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 import 'package:series_tracker/model/SeasonToAdd.dart';
+import 'package:flutter/material.dart';
 
 class AddSeriesDataHolder extends ChangeNotifier {
   String _name = '';
@@ -15,8 +16,10 @@ class AddSeriesDataHolder extends ChangeNotifier {
     return _seasons.length;
   }
 
-  void addSeason(SeasonToAdd season) {
-    _seasons.add(season);
+  void addSeason(String seasonBaseName) {
+    int seasonNameCount = _seasons.length + 1;
+    String seasonName = "$seasonBaseName $seasonNameCount";
+    _seasons.add(SeasonToAdd(name: seasonName, numberOfEpisodes: 1));
     notifyListeners();
   }
 

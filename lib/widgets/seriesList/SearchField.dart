@@ -19,7 +19,7 @@ class SearchField extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: Colors.grey.shade300,
+          fillColor: Constants.inputBackgroundColor,
           isDense: true,
           hintText: AppLocalizations.of(context)?.homeSearchButtonPlaceholder ?? '',
         ),

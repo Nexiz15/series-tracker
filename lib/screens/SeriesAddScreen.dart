@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../config/constants.dart';
 import '../model/SeasonToAdd.dart';
 import '../widgets/seriesAdd/SeriesAddName.dart';
+import '../widgets/seriesAdd/SeriesAddSeasonButton.dart';
+import '../widgets/seriesAdd/SeriesAddSeasons.dart';
 import '../widgets/seriesAdd/SeriesAddTitle.dart';
 
 class SeriesAddScreen extends StatefulWidget {
@@ -43,6 +45,8 @@ class _SeriesAddScreenState extends State<SeriesAddScreen> {
                         child: const Column(
                           children: [
                             SeriesAddName(),
+                            SeriesAddSeasonsButton(),
+                            SeriesAddSeason(),
                           ],
                         ),
                       ),

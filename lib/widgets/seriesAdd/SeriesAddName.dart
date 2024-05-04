@@ -31,7 +31,7 @@ class SeriesAddName extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Colors.grey.shade300,
+                fillColor: Constants.inputBackgroundColor,
                 isDense: true,
               ),
               onChanged: (e) => Provider.of<AddSeriesDataHolder>(context, listen: false).setName(e),

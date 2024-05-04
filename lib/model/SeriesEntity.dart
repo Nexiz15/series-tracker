@@ -6,6 +6,7 @@ class SeriesEntity {
   final int? id;
   final String name;
   final DateTime created;
+  // TODO wo kann man streamen
 
   SeriesEntity({required this.id, required this.name, required this.created});
 }
