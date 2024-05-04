@@ -2,7 +2,7 @@ import 'package:floor/floor.dart';
 
 @Entity(tableName: 'series')
 class SeriesEntity {
-  @primaryKey
+  @PrimaryKey(autoGenerate: true)
   final int? id;
   final String name;
   final DateTime created;

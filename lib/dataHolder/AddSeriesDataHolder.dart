@@ -1,8 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
-import 'package:series_tracker/model/SeasonToAdd.dart';
 import 'package:flutter/material.dart';
+import 'package:series_tracker/model/SeasonToAdd.dart';
 
 class AddSeriesDataHolder extends ChangeNotifier {
   String _name = '';
@@ -31,4 +31,8 @@ class AddSeriesDataHolder extends ChangeNotifier {
     return _name;
   }
 
+  void clearDataHolder() {
+    _name = '';
+    _seasons.clear();
+  }
 }

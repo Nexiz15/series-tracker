@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:series_tracker/config/constants.dart';
 
@@ -13,14 +13,18 @@ class SeriesAddName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        const Padding(
+          padding: EdgeInsets.only(right: 8.0),
+          child: FaIcon(
+            FontAwesomeIcons.tv,
+          ),
+        ),
         Text(
           AppLocalizations.of(context)?.addEpisodeName ?? '',
-          style:
-          const TextStyle(fontSize: Constants.entryFontSize),
+          style: const TextStyle(fontSize: Constants.entryFontSize),
         ),
         Container(
-          padding: const EdgeInsets.all(
-              Constants.defaultScreenBorderPadding),
+          padding: const EdgeInsets.all(Constants.defaultScreenBorderPadding),
           child: SizedBox(
             width: 200,
             child: TextField(

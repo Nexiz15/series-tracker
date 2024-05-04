@@ -89,11 +89,11 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `series` (`id` INTEGER, `name` TEXT NOT NULL, `created` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `series` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `created` TEXT NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `season` (`id` INTEGER, `series_id` INTEGER NOT NULL, `name` TEXT NOT NULL, FOREIGN KEY (`series_id`) REFERENCES `series` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `season` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `series_id` INTEGER NOT NULL, `name` TEXT NOT NULL, FOREIGN KEY (`series_id`) REFERENCES `series` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `episode` (`id` INTEGER, `season_id` INTEGER NOT NULL, `watched` INTEGER NOT NULL, FOREIGN KEY (`season_id`) REFERENCES `season` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `episode` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `season_id` INTEGER NOT NULL, `watched` INTEGER NOT NULL, FOREIGN KEY (`season_id`) REFERENCES `season` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION)');
 
         await database.execute(
             'CREATE VIEW IF NOT EXISTS `series_overview_projection` AS  SELECT series_outer.id AS id, series_outer.name AS name, COUNT(episode.id) AS watchedEpisodes, (SELECT COUNT(episode.id) FROM series LEFT JOIN season ON series.id = season.series_id LEFT JOIN episode ON season.id = episode.season_id WHERE series.id = series_outer.id GROUP BY series.id) AS totalEpisodes FROM series series_outer LEFT JOIN season ON series_outer.id = season.series_id LEFT JOIN episode ON season.id = episode.season_id AND episode.watched = 1 GROUP BY series_outer.id;');
@@ -173,8 +173,8 @@ class _$SeriesDao extends SeriesDao {
   }
 
   @override
-  Future<void> createSeries(SeriesEntity seriesEntity) async {
-    await _seriesEntityInsertionAdapter.insert(
+  Future<int> createSeries(SeriesEntity seriesEntity) {
+    return _seriesEntityInsertionAdapter.insertAndReturnId(
         seriesEntity, OnConflictStrategy.abort);
   }
 
@@ -216,8 +216,8 @@ class _$SeasonDao extends SeasonDao {
   }
 
   @override
-  Future<void> createSeason(SeasonEntity seasonEntity) async {
-    await _seasonEntityInsertionAdapter.insert(
+  Future<int> createSeason(SeasonEntity seasonEntity) {
+    return _seasonEntityInsertionAdapter.insertAndReturnId(
         seasonEntity, OnConflictStrategy.abort);
   }
 }

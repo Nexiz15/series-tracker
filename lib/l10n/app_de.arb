@@ -1,26 +1,11 @@
 {
+  "close": "Schließen",
   "homeMySeries": "Meine Serien",
-  "@home": {
-    "description": "list view title"
-  },
   "addAddSeries": "Serie hinzufügen",
-  "@addAddSeries": {
-    "description": "add series"
-  },
   "homeSearchButtonPlaceholder": "Suchen",
-  "@homeSearchButtonPlaceholder": {
-    "description": "search button placeholder"
-  },
-  "addEpisodeName": "Name: ",
-  "@addEpisodeName": {
-    "description": "name of an episode"
-  },
-  "addEpisodeSeason": "Staffel",
-  "@addEpisodeSeason": {
-    "description": "season"
-  },
-  "addEpisodeSeasons": "Staffeln",
-  "@addEpisodeSeasons": {
-    "description": "seasons"
-  }
+  "addEpisodeName": "Name",
+  "addSeriesSeason": "Staffel",
+  "addSeriesSeasons": "Staffeln",
+  "addSeriesNameEmptyDialogTitle": "Name ist leer",
+  "addSeriesNameEmptyDialogContent": "Bitte geben Sie einen Seriennamen ein"
 }

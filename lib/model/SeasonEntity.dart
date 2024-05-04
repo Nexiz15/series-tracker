@@ -7,7 +7,7 @@ import 'SeriesEntity.dart';
       childColumns: ['series_id'], parentColumns: ['id'], entity: SeriesEntity)
 ])
 class SeasonEntity {
-  @primaryKey
+  @PrimaryKey(autoGenerate: true)
   final int? id;
   @ColumnInfo(name: 'series_id')
   final int seriesId;

@@ -1,6 +1,5 @@
 import 'package:floor/floor.dart';
 import 'package:series_tracker/model/SeasonEntity.dart';
-import 'package:series_tracker/model/SeriesEntity.dart';
 
 @dao
 abstract class SeasonDao {
@@ -9,6 +8,5 @@ abstract class SeasonDao {
   Future<List<SeasonEntity>> findAll();
 
   @insert
-  Future<void> createSeason(SeasonEntity seasonEntity);
-
+  Future<int> createSeason(SeasonEntity seasonEntity);
 }

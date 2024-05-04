@@ -2,8 +2,6 @@ import 'package:floor/floor.dart';
 import 'package:series_tracker/dao/SeriesOverviewProjection.dart';
 import 'package:series_tracker/model/SeriesEntity.dart';
 
-import 'SeriesOverviewProjection.dart';
-
 @dao
 abstract class SeriesDao {
 
@@ -14,7 +12,7 @@ abstract class SeriesDao {
   Future<List<SeriesEntity>> findAll2();
 
   @insert
-  Future<void> createSeries(SeriesEntity seriesEntity);
+  Future<int> createSeries(SeriesEntity seriesEntity);
 
   @delete
   Future<void> deleteSeries(List<SeriesEntity> seriesEntity);
